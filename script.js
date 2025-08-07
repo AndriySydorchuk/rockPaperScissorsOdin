@@ -73,12 +73,23 @@ function displayScore() {
     console.log(`Human Score: ${humanScore}\nComputer Score: ${computerScore}`);
 }
 
+function determineWinner() {
+    if (humanScore > computerScore) {
+        console.log("Congratulations! You won the game.");
+    } else if (humanScore < computerScore) {
+        console.log("Congratulations to the computer! You lost the game.");
+    } else {
+        console.log("Draw, after 5 rounds you have not found the stronger player.")
+    }
+}
+
 function playGame() {
     for(let i = 0; i < 5; i++) {
         const humanChoice = getHumanChoice();
         const computerChoice = getComputerChoice();
         playRound(humanChoice, computerChoice);
     }
+    determineWinner();
 }
 
 playGame();
