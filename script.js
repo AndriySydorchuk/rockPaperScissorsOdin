@@ -18,3 +18,10 @@ function getComputerChoice() {
 }
 
 console.log(getComputerChoice());
+
+function getHumanChoice() {
+    let humanChoice = prompt().toLocaleLowerCase();
+    return humanChoice.replace(humanChoice.slice(0,1), humanChoice.slice(0,1).toUpperCase());
+}
+
+console.log(getHumanChoice());
