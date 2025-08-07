@@ -1,3 +1,8 @@
+let humanScore = 0;
+let computerScore = 0;
+
+console.log(`Human Score: ${humanScore}\nComputer Score: ${computerScore}`);
+
 function getComputerChoice() {
     const randomNum = Math.floor(Math.random() * 3);
 
