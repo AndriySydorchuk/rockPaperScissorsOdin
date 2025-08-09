@@ -81,14 +81,13 @@ function determineWinner() {
     }
 }
 
-function playGame() {
-    const humanChoice = getHumanChoice();
+function playGame(clickedBtn) {
     const computerChoice = getComputerChoice();
+    const humanChoice = clickedBtn.textContent;
     playRound(humanChoice, computerChoice);
     determineWinner();
+    resetScore();
 }
-
-//playGame();
 
 const TOTAL_CHOICES = 3;
 
@@ -111,13 +110,7 @@ for (let i = 0; i < TOTAL_CHOICES; i++) {
     body.appendChild(btn);
 }
 
-btns.forEach(btn => btn.addEventListener('click', event => {
-    const computerChoice = getComputerChoice();
-    const humanChoice = btn.textContent;
-    playRound(humanChoice, computerChoice);
-    determineWinner();
-    resetScore();
-}));
+btns.forEach(btn => btn.addEventListener('click', event => playGame(btn)));
 
 const resultsDiv = document.createElement('div');
 resultsDiv.style.whiteSpace = 'pre-line';
