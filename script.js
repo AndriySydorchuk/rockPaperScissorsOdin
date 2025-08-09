@@ -84,12 +84,34 @@ function determineWinner() {
 }
 
 function playGame() {
-    for(let i = 0; i < 5; i++) {
-        const humanChoice = getHumanChoice();
-        const computerChoice = getComputerChoice();
-        playRound(humanChoice, computerChoice);
-    }
+    const humanChoice = getHumanChoice();
+    const computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
     determineWinner();
 }
 
-playGame();
+//playGame();
+
+const TOTAL_CHOICES = 3;
+
+const body = document.querySelector('body');
+
+let btns = [];
+
+for (let i = 0; i < TOTAL_CHOICES; i++) {
+    let btn = document.createElement('button');
+
+    if (i===0) btn.textContent = 'Rock';
+    if (i===1) btn.textContent = 'Paper';
+    if (i===2) btn.textContent = 'Scissors';
+
+    btn.style.padding = '32px';
+    btn.style.margin = '16px';
+    btn.style.cursor = 'pointer';
+
+    btns.push(btn);
+    body.appendChild(btn);
+}
+
+
+btns.forEach(btn => btn.addEventListener('click', event => console.log(btn.textContent)));
