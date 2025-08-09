@@ -75,11 +75,9 @@ function displayScore() {
 
 function determineWinner() {
     if (humanScore === 5) {
-        resultsDiv.textContent += '\nCongratulations! You won the game.';
-        btns.forEach(btn => btn.disabled = true);
+        resultsDiv.textContent += '\nCongratulations! You won the game.\nTo start a new game, simply select one of the three options again.';
     } else if (computerScore === 5) {
-        resultsDiv.textContent += '\nCongratulations to the computer! You lost the game.';
-        btns.forEach(btn => btn.disabled = true);
+        resultsDiv.textContent += '\nCongratulations to the computer! You lost the game.\nTo start a new game, simply select one of the three options again.';
     }
 }
 
@@ -118,6 +116,7 @@ btns.forEach(btn => btn.addEventListener('click', event => {
     const humanChoice = btn.textContent;
     playRound(humanChoice, computerChoice);
     determineWinner();
+    resetScore();
 }));
 
 const resultsDiv = document.createElement('div');
@@ -125,3 +124,10 @@ resultsDiv.style.whiteSpace = 'pre-line';
 resultsDiv.textContent += `Human Score: ${humanScore} Computer Score: ${computerScore}`;
 
 body.appendChild(resultsDiv);
+
+function resetScore() {
+    if(humanScore === 5 || computerScore === 5) {
+        humanScore = 0;
+        computerScore = 0;
+    }
+}
