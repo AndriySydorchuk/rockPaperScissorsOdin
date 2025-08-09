@@ -1,5 +1,35 @@
+const TOTAL_CHOICES = 3;
+
+const body = document.querySelector('body');
+
+let btns = [];
+
+for (let i = 0; i < TOTAL_CHOICES; i++) {
+    let btn = document.createElement('button');
+
+    if (i===0) btn.textContent = 'Rock';
+    if (i===1) btn.textContent = 'Paper';
+    if (i===2) btn.textContent = 'Scissors';
+
+    btn.style.padding = '32px';
+    btn.style.margin = '16px';
+    btn.style.cursor = 'pointer';
+
+    btns.push(btn);
+    body.appendChild(btn);
+}
+
+btns.forEach(btn => btn.addEventListener('click', event => playGame(btn)));
+
+
 let humanScore = 0;
 let computerScore = 0;
+
+const resultsDiv = document.createElement('div');
+resultsDiv.style.whiteSpace = 'pre-line';
+resultsDiv.textContent += `Human Score: ${humanScore} Computer Score: ${computerScore}`;
+
+body.appendChild(resultsDiv);
 
 function getComputerChoice() {
     const randomNum = Math.floor(Math.random() * 3);
@@ -88,35 +118,6 @@ function playGame(clickedBtn) {
     determineWinner();
     resetScore();
 }
-
-const TOTAL_CHOICES = 3;
-
-const body = document.querySelector('body');
-
-let btns = [];
-
-for (let i = 0; i < TOTAL_CHOICES; i++) {
-    let btn = document.createElement('button');
-
-    if (i===0) btn.textContent = 'Rock';
-    if (i===1) btn.textContent = 'Paper';
-    if (i===2) btn.textContent = 'Scissors';
-
-    btn.style.padding = '32px';
-    btn.style.margin = '16px';
-    btn.style.cursor = 'pointer';
-
-    btns.push(btn);
-    body.appendChild(btn);
-}
-
-btns.forEach(btn => btn.addEventListener('click', event => playGame(btn)));
-
-const resultsDiv = document.createElement('div');
-resultsDiv.style.whiteSpace = 'pre-line';
-resultsDiv.textContent += `Human Score: ${humanScore} Computer Score: ${computerScore}`;
-
-body.appendChild(resultsDiv);
 
 function resetScore() {
     if(humanScore === 5 || computerScore === 5) {
